@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-frontend
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-frontend
+  template:
+    metadata:
+      labels:
+        app: demo-frontend
+    spec:
+      containers:
+        - name: demo-frontend
+          image: 282730369283.dkr.ecr.ap-northeast-2.amazonaws.com/demo-frontend:c788034a
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
